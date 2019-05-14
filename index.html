@@ -11,21 +11,27 @@
   <script src="./js/mvvm.js"></script>
 </head>
 <body>
-  <div id="mvvm-app">
-    <input type="text" v-model="word">
-    <p>{{word}}</p>
-    <button v-on:click="sayHi">change model</button>
+  <div id="app">
+    <input type="text" v-model="name" placeholder="Enter your name">
+    <p>{{name}}</p>
+    <p>{{welcome}}</p>
+    <button v-on:click="changeName">changeName</button>
   </div>
   
   <script>
     var vm = new MVVM({
-      el: '#mvvm-app',
+      el: '#app',
       data: {
-        word: 'Hello World'
+        name: 'gakki'
+      },
+      computed: {
+        welcome() {
+          return 'Welcome, '+ this.name
+        }
       },
       methods: {
-        sayHi: function() {
-          this.word = 'Hi, everybody！'
+        changeName: function() {
+          this.name = 'savo'
         }
       }
     })
