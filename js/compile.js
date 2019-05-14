@@ -80,6 +80,13 @@ var compileUtil = {
   },
   model (node, vm, exp) {
     this.bind(node, vm, exp, 'model')
+    var val = this._getVMVal(vm, exp)
+    node.addEventListener('input', e => {
+      var newVal = e.target.value
+      if (val === newVal) return
+      this._setVMVal(vm, exp, newVal)
+      val = newVal
+    })
   },
   class (node, vm, exp) {
     this.bind(node, vm, exp, 'class')

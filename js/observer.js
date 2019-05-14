@@ -15,7 +15,6 @@ Observer.prototype = {
   defineReactive (data, key, val) {
     var dep = new Dep()
     var childObj = observe(val)
-    observe(val)
     Object.defineProperty(data, key, {
       enumerable: true,
       configurable: false,
